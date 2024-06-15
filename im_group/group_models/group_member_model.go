@@ -1,4 +1,4 @@
-package models
+package group_models
 
 import "im_server/common/models"
 
@@ -8,7 +8,7 @@ import "im_server/common/models"
 type GroupMemberModel struct {
 	models.Models
 	GroupID        uint       `json:"group_id"`                        // 群ID
-	GroupModel     GroupModel `gorm:"foreignKey:GroupID" json:"_"`     // 群外键
+	GroupModel     GroupModel `gorm:"foreignKey:GroupID" json:"-"`     // 群外键
 	UserID         uint       `json:"user_id"`                         // 用户ID
 	MemberNickName string     `gorm:"size:32" json:"member_nick_name"` // 群内昵称
 	Role           int8       `json:"role"`                            // 角色：1-群主，2-管理员，3-普通成员

@@ -1,4 +1,4 @@
-package models
+package user_models
 
 import (
 	"im_server/common/models"
@@ -11,7 +11,7 @@ import (
 type UserConfModel struct {
 	models.Models
 	UserID         uint                  `json:"user_id"`                       // 用户ID
-	UserModel      UserModel             `gorm:"foreignKey:UserID" json:"_"`    // 外键
+	UserModel      UserModel             `gorm:"foreignKey:UserID" json:"-"`    // 外键
 	RecallMessage  *string               `gorm:"size:32" json:"recall_message"` // 撤回消息
 	FriendOnline   bool                  `json:"friend_online"`                 // 好友上线提醒
 	Sound          bool                  `json:"sound"`                         // 声音提醒

@@ -1,6 +1,9 @@
 package ctype
 
-import "encoding/json"
+import (
+	"database/sql/driver"
+	"encoding/json"
+)
 
 // VerifyQuestion
 // @Description: 验证问题
@@ -28,7 +31,7 @@ func (v *VerifyQuestion) Scan(value interface{}) error {
 // @Author Oberl-Fitzgerald 2024-06-14 20:05:35
 // @Return value
 // @Return err
-func (v VerifyQuestion) Value() (value interface{}, err error) {
+func (v VerifyQuestion) Value() (driver.Value, error) {
 	b, err := json.Marshal(v)
 	return string(b), err
 }

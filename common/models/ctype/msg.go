@@ -1,6 +1,7 @@
 package ctype
 
 import (
+	"database/sql/driver"
 	"encoding/json"
 	"time"
 )
@@ -38,7 +39,7 @@ func (m *Msg) Scan(value interface{}) error {
 // @Author Oberl-Fitzgerald 2024-06-14 20:02:58
 // @Return value
 // @Return err
-func (m Msg) Value() (value interface{}, err error) {
+func (m Msg) Value() (driver.Value, error) {
 	b, err := json.Marshal(m)
 	return string(b), err
 }

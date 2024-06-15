@@ -1,6 +1,9 @@
 package ctype
 
-import "encoding/json"
+import (
+	"database/sql/driver"
+	"encoding/json"
+)
 
 // SystemMsg
 // @Description: 系统提示
@@ -23,7 +26,7 @@ func (s *SystemMsg) Scan(value interface{}) error {
 // @Author Oberl-Fitzgerald 2024-06-14 20:04:08
 // @Return value
 // @Return err
-func (s SystemMsg) Value() (value interface{}, err error) {
+func (s SystemMsg) Value() (driver.Value, error) {
 	b, err := json.Marshal(s)
 	return string(b), err
 }

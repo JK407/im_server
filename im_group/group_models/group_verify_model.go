@@ -1,4 +1,4 @@
-package models
+package group_models
 
 import (
 	"im_server/common/models"
@@ -11,7 +11,7 @@ import (
 type GroupVerifyModel struct {
 	models.Models
 	GroupID           uint                  `json:"group_id"`                          // 群ID
-	GroupModel        GroupModel            `gorm:"foreignKey:GroupID" json:"_"`       // 群外键
+	GroupModel        GroupModel            `gorm:"foreignKey:GroupID" json:"-"`       // 群外键
 	UserID            uint                  `json:"user_id"`                           // 用户ID
 	AdditionalMessage *string               `gorm:"size:32" json:"additional_message"` // 附加消息
 	VerifyQuestion    *ctype.VerifyQuestion `json:"verify_question"`                   // 验证问题 为3、4时需要
